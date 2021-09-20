@@ -1,8 +1,0 @@
----
-- name: Setup directories
-  file:
-    path: "{{ item }}"
-    recurse: yes
-  with_items:
-    - "{{ paths.ELASTICSEARCH }}"
-    - "{{ paths.LOGGING }}"
