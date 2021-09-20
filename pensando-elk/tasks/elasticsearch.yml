@@ -1,7 +1,7 @@
 ---
 - name: Start elasticsearch
   docker_container:
-    image: "docker.elastic.co/elasticsearch/elasticsearch:{{ lookup('env', 'ELK_TAG') | default('7.8.0', true) }}"
+    image: "docker.elastic.co/elasticsearch/elasticsearch:{{ lookup('env', 'ELK_TAG') | default('7.14.0', true) }}"
     name: elasticsearch
     network_mode: host
     restart_policy: always

@@ -7,12 +7,6 @@
   vars_files:
     - pensando-elk/vars/vars.yml
   tasks:
-    - name: Stop the pensando-filebeat container
-      docker_container:
-        name: pensando-filebeat
-        state: stopped
-      ignore_errors: yes
-
     - name: Stop the elastiflow-logstash container
       docker_container:
         name: elastiflow-logstash-oss

@@ -1,7 +1,7 @@
 ---
 - name: Start kibana
   docker_container:
-    image: docker.elastic.co/kibana/kibana:{{ lookup('env', 'ELK_TAG') | default('7.8.0', true) }}
+    image: docker.elastic.co/kibana/kibana:{{ lookup('env', 'ELK_TAG') | default('7.14.0', true) }}
     name: kibana
     network_mode: host
     restart_policy: always
