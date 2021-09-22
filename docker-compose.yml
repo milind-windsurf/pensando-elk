@@ -36,8 +36,8 @@ services:
       - ALL
     privileged: true
     volumes:
-      - pensando_es:/usr/share/elasticsearch/data
-      - es_backups:/usr/share/elasticsearch/backups
+      - ${PWD}/data/pensando_es:/usr/share/elasticsearch/data
+      - ${PWD}/data/es_backups:/usr/share/elasticsearch/backups
     ports:
       - 9200:9200
     networks: ['elk-stack']
@@ -54,7 +54,6 @@ services:
     image: docker.elastic.co/logstash/logstash:${TAG}
     container_name: pensando-logstash
     restart: always
-    # Provide a simple pipeline configuration for Logstash with a bind-mounted file.
     volumes:
       - ${PWD}/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
       - ${PWD}/logstash/taormina.conf:/usr/share/logstash/pipeline/taormina.conf
@@ -66,10 +65,10 @@ services:
     networks: ['elk-stack']
     depends_on: ['elasticsearch']
 
-volumes:
-  pensando_es:
-    driver: local
-  es_backups:
-    driver: local
+# volumes:
+#   ${PWD}/data/pensando_es:
+#     driver: local
+#   ${PWD}/data/es_backups:
+#     driver: local
 
 networks: {elk-stack: {}}
