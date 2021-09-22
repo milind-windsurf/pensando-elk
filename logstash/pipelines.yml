@@ -1,0 +1,2 @@
+- pipeline.id: taormina
+  path.config: "/usr/share/logstash/pipeline/taormina.conf"

@@ -1,0 +1,75 @@
+version: '3.7'
+services:
+  # The environment variable "TAG" is used throughout this file to
+  # specify the version of the images to run. The default is set in the
+  # '.env' file in this folder. It can be overridden with any normal
+  # technique for setting environment variables, for example:
+  #
+  #   TAG=6.0.0-beta1 docker-compose up
+  #
+  # REF: https://docs.docker.com/compose/compose-file/#variable-substitution
+  #
+  # Also be sure to set the ELASTIC_VERSION variable. For released versions,
+  # ${TAG} and ${ELASTIC_VERSION} will be identical, but for pre-release
+  # versions, ${TAG} might contain an extra build identifier, like
+  # "6.0.0-beta1-3eab5b40", so a full invocation might look like:
+  #
+  #   ELASTIC_VERSION=6.0.0-beta1 TAG=6.0.0-beta1-3eab5b40 docker-compose up
+  #
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    container_name: pensando-elasticsearch
+    restart: always
+    environment:
+      - http.host=0.0.0.0
+      - http.port=9200
+      - node.name=es01
+      - cluster.initial_master_nodes=es01
+      - ES_JAVA_OPTS=-Xms4g -Xmx4g
+      - xpack.security.enabled=false
+    ulimits:
+      nproc: 65535
+      memlock:
+        soft: -1
+        hard: -1
+    cap_add:
+      - ALL
+    privileged: true
+    volumes:
+      - pensando_es:/usr/share/elasticsearch/data
+      - es_backups:/usr/share/elasticsearch/backups
+    ports:
+      - 9200:9200
+    networks: ['elk-stack']
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    container_name: pensando-kibana
+    restart: always
+    ports: ['5601:5601']
+    networks: ['elk-stack']
+    depends_on: ['elasticsearch']
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${TAG}
+    container_name: pensando-logstash
+    restart: always
+    # Provide a simple pipeline configuration for Logstash with a bind-mounted file.
+    volumes:
+      - ${PWD}/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ${PWD}/logstash/taormina.conf:/usr/share/logstash/pipeline/taormina.conf
+    ports:
+      - target: 5514
+        published: 5514
+        protocol: udp
+      - 6102:6102
+    networks: ['elk-stack']
+    depends_on: ['elasticsearch']
+
+volumes:
+  pensando_es:
+    driver: local
+  es_backups:
+    driver: local
+
+networks: {elk-stack: {}}
