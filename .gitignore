@@ -129,11 +129,11 @@ dmypy.json
 .pyre/
 
 # Instance specific
-pensando-elk/es_data
-pensando-elk/filebeat
+data/pensando_es/
+data/es_backups/
 *.retry
 .vscode
-pensando-elk/logs/suricata_logs/*
+
 
 # # Sphinx doc supporting files and dirs
 # _build
