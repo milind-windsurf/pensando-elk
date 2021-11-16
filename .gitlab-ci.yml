@@ -1,0 +1,12 @@
+# Only build new docs when we deploy to master
+pages:
+  stage: deploy
+  script:
+    - pip install sphinx sphinx_rtd_theme
+    - cd docs ; make html
+    - mv _build/html/ ../public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
