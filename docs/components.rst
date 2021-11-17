@@ -9,16 +9,19 @@ The following docker containers are used in the Pensando-ELK implementation
 Elasticsearch
 ------------------
     - Hub Repository: docker.elastic.co/elasticsearch/elasticsearch
-    - Container Name: elasticsearch
+    - Container Name: pensando-elasticsearch
     - Port(s) Used: 9200
     - Description:
+      This is the storage of all the syslog messages comming from the Pensando
+      platform.  Since this is run in a container, the ./data/pensando_es dir
+      will persist through container restarts so that no data is lost.
 
 
 
 Kibana
 ------------------
     - Hub Repository: docker.elastic.co/kibana/kibana
-    - Container Name: kibana
+    - Container Name: pensando-kibana
     - Port(s) Used: 5601
     - Description:
 
@@ -26,23 +29,13 @@ Kibana
 
 Logstash
 ------------------
-    - Hub Repository: robcowart/elastiflow-logstash-oss:4.0.0-beta
-    - Container Name: elastiflow-logstash-oss
-    - Port(s) Used: 4739
+    - Hub Repository: docker.elastic.co/logstash/logstash
+    - Container Name: pensando-logstash
+    - Port(s) Used: 5514
     - Description:
-
-
-
-Filebeat
-------------------
-    - Hub Repository: docker.elastic.co/beats/filebeat
-    - Container Name: pensando-filebeat
-    - Port(s) Used: 9001
-    - Description:
-
-
-Suricata
-------------------
-    - Hub Repository: jasonish/suricata:latest
-    - Container Name: suricata
-    - Description:
+      Uses the ./logstash/pipelines file for managing how many workers are used
+      to parse incoming syslog messages and also to set up where the configuration
+      file is stored within the container.
+      The ./logstash/taormina.conf file is used by the pipeline workers to ingest
+      syslog messages as they are received, manipulate them and store them in a
+      JSON format in Elasticsearch.

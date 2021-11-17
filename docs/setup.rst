@@ -3,7 +3,7 @@
 Setup
 ======================
 
-The Elastiflow visualizations require that they are manually loaded.  To do this, in the Kibana UI:
+The index-patterns, visualizations and dashboards require that they are manually loaded.  To do this, in the Kibana UI:
 
 1.) Click the "Hamburger Menu" button in the top left corner and under **Management** select "Stack Management"
 
@@ -20,7 +20,7 @@ That will bring up the import screen on the right side.
 
 .. code-block:: bash
 
-    <install-dir>/pensando-elk/files/etc/elastiflow/elastiflow.ndjson
+    <install-dir>/kibana/pensando-dss-elk.ndjson
 
 4.) Once the file is selected, click the blue Import button at the bottom of the page
 
@@ -33,4 +33,4 @@ If it works (*and why wouldn't it?*) you should see something similar to the bel
     :scale: 50 %
 
 
-Now from the Dashboard menu you should be able to see the Elastiflow dashboards
+Now from the Dashboard menu you should be able to see the Pensando DSS dashboards

@@ -3,32 +3,24 @@
 **********************
 Overview
 **********************
-.. toctree::
-   :hidden:
-
-   components
 
 Current Verison:  0.0.1a
 
 
-The pensando-elk implementation is a combination of several open source, Elastic based applications
-plus the Pensando Systems implementation of Elastic logstash/filebeat applications.  By downloading and
-installing the pensando-elk software, there is a curated view of the following, disparate implementations:
+The pensando-elk implementation the starting point for building and utlizing the Elasticstack for monitoring and analyzing
+data, both about and traversing, the Pensando DSS(es) - DSC(s) coming soon - within your environment.  The purpose is to consolidate the
+applications and tools used for said monitoring and analysis and deploy them in an automated fashion.
 
-    + **Pensando Distributed Firewall**: logging from Pensando DSC firewalls
-
-    + `Elastiflow <https://github.com/robcowart/elastiflow/tree/4.x-dev>`_: Network flow data gathered from Pensando DSCs
-
-    + `Suricata <https://suricata-ids.org/>`_: Network threat detection engine using ERSPAN II logs
-
-    + `Zeek <https://zeek.org/>`_: Configurable packet stream reader that converts ERSPAN III logs to events and alerts
 
 .. seealso:: For more information on each of the components in Pensando-ELK, visit the :ref:`components`
 
-To use pensando-elk, you only need a CentOS 8 or Ubuntu 18.04 server/VM with the following minimums:
+The recommended hardware needed to run a lab instance of pensando-elk:
 
     + 4 CPU
     + 16GB RAM - (up to 64GB supported)
     + 128GB HDD
 
-From there, you can :ref:`install-pensando-elk`, :ref:`running-pensando-elk` and then perform an initial :ref:`setup-pensando-elk`
+
+To use pensando-elk, the host system needs `docker <https://docs.docker.com/get-docker/>`_ and `docker-compose <https://docs.docker.com/compose/install/>`_  installed before it can be instantiated.
+
+From there, you can :ref:`running-pensando-elk`
