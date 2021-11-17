@@ -15,7 +15,6 @@ Pensando ELK analytics documentation
    run
    setup
    stop
-   components
 
 About
 -----

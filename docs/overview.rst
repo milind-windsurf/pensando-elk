@@ -23,4 +23,4 @@ The recommended hardware needed to run a lab instance of pensando-elk:
 
 To use pensando-elk, the host system needs `docker <https://docs.docker.com/get-docker/>`_ and `docker-compose <https://docs.docker.com/compose/install/>`_  installed before it can be instantiated.
 
-From there, you can :ref:`running-pensando-elk`
+From there, you can :ref:`download-pensando-elk` and then :ref:`running-pensando-elk`

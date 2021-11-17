@@ -4,7 +4,7 @@
 Download
 **********************
 
-To download Pensando ELK, login to your system as a non-root user[1]_ and issue the following
+To download Pensando ELK, login to your system as a non-root user [1]_ and issue the following
 command:
 
 .. code-block:: bash
