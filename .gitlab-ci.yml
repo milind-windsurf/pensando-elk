@@ -27,7 +27,7 @@ before_script:
 pages:
   stage: deploy
   script:
-    - pip install sphinx sphinx_rtd_theme
+    - pip install sphinx sphinx_rtd_theme pydata_sphinx_theme
     - cd docs ; make html
     - mv _build/html/ ../public/
   artifacts:
