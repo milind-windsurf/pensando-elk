@@ -10,23 +10,36 @@ applications and tools used for said monitoring and analysis and deploy them in 
 Instantiation can be done on any system with docker and docker-compose installed.
 
 ## Running Pensando-ELK
+  #### Documented version
+  To get up and running with Pensando's ELK implementation, but need a bit more guidance than a basic readme, [click here](https://pensando.gitlab.io/tbd/elastic/pensando-elk/index.html)
 
-1. Clone this repository
+  #### Quick Start
+  NOTE: Use this if you don't need docker(-compose) help and understand basic ELK admin
+  1. Clone this repository
 
-2. Change into the directory where it is stored
+  2. Change into the directory where it is stored
 
-3. Edit a file called '.env' and add the following to it - changing the 7.15.1 to the version of ELK you want to use:
-    ```
-    TAG=7.15.1
-    ```
-4. Run 'docker-compose up'
+  3. Create the file '.env' and add the following to it (change 7.15.1 if the version of ELK you want is different):
+      ```
+      TAG=7.15.1
+      ```
 
-5. Give it about 5 minutes to start up and point your browser to the ip of the host you ran the docker-compose cmd on (if browswer is on the same host, it will be localhost) and port 5601
+  4. Create the following 2 directories and give them full write permissions (777 works)
+      ```
+      ./data/es_backup
+      ./data/pensando_es
+      ```
 
-   - as an example:  http://localhost:5601
+  5. Run 'docker-compose up'
 
-6.
+  6. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
 
+  7. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
+
+  8. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, port 5514
+
+## Support
+If you need help or have questions, you can [email us](mailto:contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) and we will get back to you as soon as we can
 
 ## Support Policy
-The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitHub repository (at https://github.com/Pensando) or sites other than our official Downloads page on https://support.pensando.io are provided under the best effort policy.
+The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando) or sites other than our official Downloads page on https://support.pensando.io are provided under the best effort policy.
