@@ -26,7 +26,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
   4. Create the following 2 directories and give them full write permissions (777 works)
       ```
-      ./data/es_backup
+      ./data/es_backups
       ./data/pensando_es
       ```
 

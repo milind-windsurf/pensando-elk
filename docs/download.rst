@@ -25,7 +25,7 @@ Once you have the repo cloned, there are a few, one-time setup tasks that need t
 
 3. Create the following 2 directories and give them full write permissions (777 works)
    ```
-   ./data/es_backup
+   ./data/es_backups
    ./data/pensando_es
    ```
 
