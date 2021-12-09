@@ -36,7 +36,15 @@ Instantiation can be done on any system with docker and docker-compose installed
       sudo vm.max_map_count=262144 >> /etc/sysctl.conf
       ```
 
-  6. Run 'docker-compose up'
+  6. Run
+
+     If using docker-compose v1 (standalone)
+
+     `docker-compose up`
+
+     Or if using docker-compose v2 (docker plug-in)
+
+     `docker compose up`
 
   7. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
 
