@@ -12,7 +12,15 @@ To start Pensando ELK, run docker-compose up while in the directory where the do
 .. code-block:: bash
 
     cd <install-dir>
-    docker-compose up
+
+    If using docker-compose v1 (standalone)
+
+     `docker-compose up`
+
+     Or if using docker-compose v2 (docker plug-in)
+
+     `docker compose up`
+
 
 Give it a few minutes and, using your browser, try to login to the IP address of your system running docker at port 5601
 
