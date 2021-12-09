@@ -33,7 +33,7 @@ Instantiation can be done on any system with docker and docker-compose installed
   5. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
       ```
       sudo sysctl -w vm.max_map_count=262144
-      sudo vm.max_map_count=262144 >> /etc/sysctl.conf
+      sudo echo vm.max_map_count=262144 >> /etc/sysctl.conf
       ```
 
   6. Run
