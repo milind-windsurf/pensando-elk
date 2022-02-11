@@ -1,7 +1,7 @@
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via [issue](https://gitlab.com/pensando/tbd/elastic/pensando-elk/-/issues) or
-[service-desk email](contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) before making a change.  Other methods of communication with the owners of this repository may, or may not, be followed up on (like direct emails or slack msgs) and your idea/fix may be lost in the ether. 
+[service-desk email](mailto://contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) before making a change.  Other methods of communication with the owners of this repository may, or may not, be followed up on (like direct emails or slack msgs) and your idea/fix may be lost in the ether. 
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
