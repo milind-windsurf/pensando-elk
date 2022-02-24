@@ -11,7 +11,7 @@ To start Pensando ELK, run docker-compose up while in the directory where the do
 
 .. code-block:: bash
 
-    cd <install-dir>
+    `cd <install-dir>`
 
     If using docker-compose v1 (standalone)
 
