@@ -12,7 +12,7 @@ Elasticsearch
     - Container Name: pensando-elasticsearch
     - Port(s) Used: 9200
     - Description:
-      This is the storage of all the syslog messages comming from the Pensando
+      This is the storage of all the syslog messages coming from the Pensando
       platform.  Since this is run in a container, the ./data/pensando_es dir
       will persist through container restarts so that no data is lost.
 
