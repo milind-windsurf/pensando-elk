@@ -4,10 +4,10 @@
 Overview
 **********************
 
-Current Verison:  0.0.1a
+Current Version:  0.0.1a
 
 
-The pensando-elk implementation the starting point for building and utlizing the Elasticstack for monitoring and analyzing
+The pensando-elk implementation the starting point for building and utilizing the Elasticstack for monitoring and analyzing
 data, both about and traversing, the Pensando DSS(es) - DSC(s) coming soon - within your environment.  The purpose is to consolidate the
 applications and tools used for said monitoring and analysis and deploy them in an automated fashion.
 

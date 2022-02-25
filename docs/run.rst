@@ -5,13 +5,13 @@ Run
 
 These run instructions can be run numerous times since you may start and :ref:`stop-pensando-elk` ad-hoc.
 
-The docker-compose does not survive reboots, so if the system is restarted, you will (most likely) need to run the start again.
+The docker containers should survive reboots, so if the system is restarted, they should restart on their own.  If not you can refer to the instrcutions below.
 
 To start Pensando ELK, run docker-compose up while in the directory where the docker-compose.yml file is located
 
 .. code-block:: bash
 
-    cd <install-dir>
+    `cd <install-dir>`
 
     If using docker-compose v1 (standalone)
 

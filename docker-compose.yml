@@ -27,6 +27,7 @@ services:
       - cluster.initial_master_nodes=es01
       - ES_JAVA_OPTS=-Xms4g -Xmx4g
       - xpack.security.enabled=false
+      - action.destructive_requires_name=false
     ulimits:
       nproc: 65535
       memlock:

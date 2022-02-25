@@ -12,7 +12,7 @@ Elasticsearch
     - Container Name: pensando-elasticsearch
     - Port(s) Used: 9200
     - Description:
-      This is the storage of all the syslog messages comming from the Pensando
+      This is the storage of all the syslog messages coming from the Pensando
       platform.  Since this is run in a container, the ./data/pensando_es dir
       will persist through container restarts so that no data is lost.
 
@@ -35,7 +35,7 @@ Logstash
     - Description:
       Uses the ./logstash/pipelines file for managing how many workers are used
       to parse incoming syslog messages and also to set up where the configuration
-      file is stored within the container.
-      The ./logstash/taormina.conf file is used by the pipeline workers to ingest
-      syslog messages as they are received, manipulate them and store them in a
-      JSON format in Elasticsearch.
+      file is stored within the container:
+      - ./logstash/taormina.conf file is used by the pipeline workers to ingest
+      syslog messages as they are received from the Aruba CX10K switch, manipulate
+      them and store them in a JSON format in Elasticsearch.
