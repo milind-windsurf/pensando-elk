@@ -3,7 +3,14 @@
 Setup
 ======================
 
-The index-patterns, visualizations and dashboards require that they are manually loaded.  To do this, in the Kibana UI:
+From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
+
+.. code-block:: bash
+
+  `curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog?pretty' -d @./elasticsearch/pensando_fwlog_mapping.json`
+
+
+The index-patterns, visualizations and dashboards require that they are manually loaded via the Kibana UI:
 
 1.) Click the "Hamburger Menu" button in the top left corner and under **Management** select "Stack Management"
 
