@@ -20,14 +20,14 @@ Once you have the repo cloned, there are a few, one-time setup tasks that need t
 
 2. Create the file '.env' and add the following to it (change 8.0.0 if the version of ELK you want is different):
 
-  .. code-block:: bash
+  .. code-block:: none
 
     TAG=8.0.0
 
 
 3. Create the following 2 directories and give them full write permissions (777 works)
 
-  .. code-block:: bash
+  .. code-block:: none
 
     mkdir -p ./data/es_backups
     mkdir -p ./data/pensando_es
@@ -35,7 +35,7 @@ Once you have the repo cloned, there are a few, one-time setup tasks that need t
 
 4. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
 
-  .. code-block:: bash
+  .. code-block:: none
 
     sudo sysctl -w vm.max_map_count=262144
     sudo echo vm.max_map_count=262144 >> /etc/sysctl.conf
