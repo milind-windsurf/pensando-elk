@@ -9,7 +9,7 @@ The docker containers should survive reboots, so if the system is restarted, the
 
 To start Pensando ELK, run docker-compose up while in the directory where the docker-compose.yml file is located
 
-.. code-block:: bash
+.. code-block:: none
 
     `cd <install-dir>`
 
@@ -26,14 +26,14 @@ Give it a few minutes and, using your browser, try to login to the IP address of
 
 EXAMPLE:
 
-.. code-block:: bash
+.. code-block:: none
 
   https://localhost:5601
 
 If you get an error message in your browser, you can `check the logs <https://www.shellhacks.com/docker-container-logs-how-to-check/>`_ for elasticsearch and kibana using the following
 commands:
 
-.. code-block:: bash
+.. code-block:: none
 
   docker logs pensando-elasticsearch
   docker logs pensando-kibana
