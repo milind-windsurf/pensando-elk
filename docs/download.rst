@@ -25,12 +25,13 @@ Once you have the repo cloned, there are a few, one-time setup tasks that need t
     TAG=8.0.0
 
 
-3. Create the following 2 directories and give them full write permissions (777 works)
+3. Create the following 2 directories and give them full write permissions
 
   .. code-block:: none
 
     mkdir -p ./data/es_backups
     mkdir -p ./data/pensando_es
+    chmod -R 777 ./data
 
 
 4. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
