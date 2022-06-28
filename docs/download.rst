@@ -9,7 +9,7 @@ command:
 
 .. code-block:: bash
 
-    git clone https://gitlab.com/pensando/tbd/elastic/pensando-elk.git
+    git clone https://gitlab.com/pensando/tbd/elastic/elk-pensando.git
 
 
 This will clone the repository into the pensando-elk directory.
