@@ -9,9 +9,9 @@ applications and tools used for said monitoring and analysis and deploy them in 
 
 Instantiation can be done on any system with docker and docker-compose installed.
 
-## Running Pensando-ELK
+## Running ELK-Pensando
   #### Documented version
-  To get up and running with Pensando's ELK implementation, but need a bit more guidance than a basic readme, [click here](https://pensando.gitlab.io/tbd/elastic/pensando-elk/index.html)
+  To get up and running with Pensando's ELK implementation, but need a bit more guidance than a basic readme, [click here](https://pensando.gitlab.io/tbd/siem/elastic/elk-pensando/index.html)
 
   #### Quick Start
   NOTE: Use this if you are running on a *nix system, don't need docker(-compose) help and understand basic ELK admin
