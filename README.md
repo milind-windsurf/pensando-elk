@@ -46,11 +46,15 @@ Instantiation can be done on any system with docker and docker-compose installed
 
      `docker compose up`
 
-  7. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
+  7. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
 
-  8. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
+     `curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog?pretty' -d @./elasticsearch/pensando_fwlog_mapping.json`
 
-  9. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, port 5514
+  8. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
+
+  9. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
+
+ 10. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, port 5514
 
 
 ## Support
