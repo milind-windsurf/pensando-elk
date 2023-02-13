@@ -28,6 +28,8 @@ That will bring up the import screen on the right side.
 .. code-block:: bash
 
     <install-dir>/kibana/pensando-dss-elk.ndjson
+                        and/or  (you need to install both)
+    <install-dir>/kibana/elastiflow-7.14.x-ecs-dark.ndjson
 
 4.) Once the file is selected, click the blue Import button at the bottom of the page
 
@@ -40,4 +42,4 @@ If it works (*and why wouldn't it?*) you should see something similar to the bel
     :scale: 50 %
 
 
-Now from the Dashboard menu you should be able to see the Pensando DSS dashboards
+Now from the Dashboard menu you should be able to see the AMD Pensando DPU dashboards and the Elastiflow dashboards for IPFix from the AMD Pensando DPU
