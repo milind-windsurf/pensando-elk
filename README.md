@@ -1,4 +1,4 @@
-<img src="https://pensando.io/wp-content/themes/pensando/assets/images/logo.svg" alt="My cool logo" width="350"/>
+<img src="https://www.amd.com/system/files/styles/992px/private/2022-05/1423875-pensando-logo-white-1260x709_0.png?itok=D5gjoCQP" alt="AMD Pensando" width="350"/>
 
 
 ELK based analytics for Pensado Systems
