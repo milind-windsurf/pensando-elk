@@ -37,11 +37,12 @@ If these do not match your current install, [check one of the other branches](ht
       TAG=8.0.0
       ```
 
-  4. Create the following 2 directories and give them full write permissions (777 works)
+  4. Create the following directories and give them full write permissions (777 works)
       ```
       ./data/es_backups
       ./data/pensando_es
       ./data/elastiflow
+      chmod -R 777 ./data
       ```
 
   5. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
