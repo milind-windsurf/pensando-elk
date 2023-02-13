@@ -54,11 +54,11 @@ If these do not match your current install, [check one of the other branches](ht
 
      If using docker-compose v1 (standalone)
 
-     `docker-compose up`
+     `docker-compose -d up`
 
      Or if using docker-compose v2 (docker plug-in)
 
-     `docker compose up`
+     `docker compose up --detach`
 
   7. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
 
@@ -70,10 +70,13 @@ If these do not match your current install, [check one of the other branches](ht
 
  10. In Kibana, import ```./kibana/elastiflow-7.14.x-ecs-dark.ndjson``` into your saved objects
 
- 11. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/taormina.conf file in the input section at the top)
+ 11. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/taormina.conf file in the input section at the top)*
 
- 12. Using PSM, point your DSS IPFix flows at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)
+ 12. Using PSM, point your DSS IPFix flows at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
 
+ 13. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
+
+*NOTE: It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
 ## Support
 If you need help or have questions, you can [email us](mailto:contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) and we will get back to you as soon as we can
