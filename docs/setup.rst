@@ -23,12 +23,12 @@ The index-patterns, visualizations and dashboards require that they are manually
 
 That will bring up the import screen on the right side.
 
-3.) Click the Import icon and select the file from your install directory located here:
+3.) Click the Import icon and select the files from your install directory located here:
 
 .. code-block:: bash
 
     <install-dir>/kibana/pensando-dss-elk.ndjson
-                        and/or  (you need to install both)
+                        and
     <install-dir>/kibana/elastiflow-7.14.x-ecs-dark.ndjson
 
 4.) Once the file is selected, click the blue Import button at the bottom of the page

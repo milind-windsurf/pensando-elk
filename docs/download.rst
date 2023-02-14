@@ -39,7 +39,7 @@ Once you have the repo cloned, there are a few, one-time setup tasks that need t
   .. code-block:: none
 
     sudo sysctl -w vm.max_map_count=262144
-    sudo echo vm.max_map_count=262144 >> /etc/sysctl.conf
+    echo vm.max_map_count=262144 | sudo tee -a /etc/sysctl.conf
 
 
 Now you can :ref:`running-pensando-elk` pensando-elk
