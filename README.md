@@ -48,6 +48,7 @@ If these do not match your current install, [check one of the other branches](ht
   5. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
       ```
       sudo sysctl -w vm.max_map_count=262144
+      echo vm.max_map_count=262144 | sudo tee -a /etc/sysctl.conf
       ```
 
   6. Run
