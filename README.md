@@ -16,7 +16,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 This branch works with the following software.
 
-CXOS: 10.11 <br/>
+CXOS: 10.11.x <br/>
 PSM:  1.54.1-T-7
 
 If these do not match your current install, [check one of the other branches](https://gitlab.com/pensando/tbd/siem/elastic/elk-pensando/-/branches)
