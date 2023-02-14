@@ -16,7 +16,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 This branch works with the following software.
 
-CXOS: 10.11 <br/>
+CXOS: 10.11.x <br/>
 PSM:  1.54.1-T-7
 
 If these do not match your current install, [check one of the other branches](https://gitlab.com/pensando/tbd/siem/elastic/elk-pensando/-/branches)
@@ -46,7 +46,7 @@ If these do not match your current install, [check one of the other branches](ht
   5. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
       ```
       sudo sysctl -w vm.max_map_count=262144
-      sudo echo vm.max_map_count=262144 >> /etc/sysctl.conf
+      echo vm.max_map_count=262144 | sudo tee -a /etc/sysctl.conf
       ```
 
   6. Run
