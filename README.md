@@ -17,7 +17,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 This branch works with the following software.
 
 CXOS: 10.12.x <br/>
-PSM:  1.59.0-50
+PSM:  1.59.0-50 or later
 
 If these do not match your current install, [check one of the other branches](https://gitlab.com/pensando/tbd/siem/elastic/elk-pensando/-/branches)
 
@@ -32,9 +32,9 @@ If these do not match your current install, [check one of the other branches](ht
 
   2. Change into the directory where it is stored
 
-  3. Create the file '.env' and add the following to it (change 8.0.0 if the version of ELK you want is different):
+  3. run the following command (change 8.6.2 if the version of ELK you want is different):
       ```
-      TAG=8.0.0
+      echo "TAG=8.6.2" >.env
       ```
 
   4. Create the following directories and give them full write permissions (777 works)
