@@ -12,6 +12,13 @@ Instantiation can be done on any system with docker and docker-compose installed
 ## Running ELK-Pensando
 
 ---
+**WARNING**
+
+DO NOT RUN DOCKER AS ROOT!!!  IT WILL NOT WORK.  YOU HAVE BEEN WARNED.
+
+---
+
+---
 **NOTE**
 
 This branch works with the following software.
