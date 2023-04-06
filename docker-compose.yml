@@ -57,7 +57,8 @@ services:
     restart: 'unless-stopped'
     volumes:
       - ${PWD}/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
-      - ${PWD}/logstash/taormina.conf:/usr/share/logstash/pipeline/taormina.conf
+      - ${PWD}/logstash/dss_syslog.conf:/usr/share/logstash/pipeline/dss_syslog.conf
+      - ${PWD}/logstash/psm_event.conf:/usr/share/logstash/pipeline/psm_event.conf
     ports:
       - target: 5514
         published: 5514
