@@ -347,6 +347,12 @@
             "rflow_pkts": {
               "type": "long"
             },
+            "total_bytes": {
+              "type": "long"
+            },
+            "total_packets": {
+              "type": "long"
+            },
             "state": {
               "type": "text",
               "fields": {
