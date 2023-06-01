@@ -77,7 +77,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   9. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
 
- 10. In Kibana, import ```./kibana/elastiflow-7.14.x-ecs-dark.ndjson``` into your saved objects
+ 10. In Kibana, import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
 
  11. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/taormina.conf file in the input section at the top)*
 
