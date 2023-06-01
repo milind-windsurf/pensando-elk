@@ -133,6 +133,7 @@ data/pensando_es/
 data/es_backups/
 *.retry
 .vscode
+.vimrc
 
 
 # # Sphinx doc supporting files and dirs

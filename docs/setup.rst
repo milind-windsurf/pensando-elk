@@ -23,11 +23,13 @@ The index-patterns, visualizations and dashboards require that they are manually
 
 That will bring up the import screen on the right side.
 
-3.) Click the Import icon and select the file from your install directory located here:
+3.) Click the Import icon and select the files from your install directory located here:
 
 .. code-block:: bash
 
     <install-dir>/kibana/pensando-dss-elk.ndjson
+                        and
+    <install-dir>/kibana/elastiflow-7.14.x-ecs-dark.ndjson
 
 4.) Once the file is selected, click the blue Import button at the bottom of the page
 
@@ -40,4 +42,4 @@ If it works (*and why wouldn't it?*) you should see something similar to the bel
     :scale: 50 %
 
 
-Now from the Dashboard menu you should be able to see the Pensando DSS dashboards
+Now from the Dashboard menu you should be able to see the AMD Pensando DPU dashboards and the Elastiflow dashboards for IPFix from the AMD Pensando DPU
