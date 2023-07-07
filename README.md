@@ -32,8 +32,8 @@ If these do not match your current install, [check one of the other branches](ht
 ---
 
 
-  #### Quick Start
-  NOTE: Use this if you are running on a *nix system, don't need docker(-compose) help and understand basic ELK admin
+  #### Installation and running
+ 
   1. Clone this repository
 
   2. Change into the directory where it is stored
