@@ -31,8 +31,6 @@ If these do not match your current install, [check one of the other branches](ht
 
 ---
 
-  #### Documented version
-  To get up and running with Pensando's ELK implementation, but need a bit more guidance than a basic readme, [click here](https://pensando.gitlab.io/tbd/siem/elastic/elk-pensando/index.html)
 
   #### Quick Start
   NOTE: Use this if you are running on a *nix system, don't need docker(-compose) help and understand basic ELK admin
@@ -94,7 +92,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   13. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
 
-  14. In Kibana, import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
+  14. If collecting IPFix, in Kibana import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
 
   15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 
@@ -104,4 +102,4 @@ If these do not match your current install, [check one of the other branches](ht
 If you need help or have questions, you can [email us](mailto:contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) and we will get back to you as soon as we can
 
 ## Support Policy
-The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando).
+The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and AMD Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando).
