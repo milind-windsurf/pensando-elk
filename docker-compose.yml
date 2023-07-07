@@ -69,14 +69,14 @@ services:
 
   # ElastiFlow Unified Collector
   flow-collector:
-    image: elastiflow/flow-collector:6.1.3
+    image: elastiflow/flow-collector:6.2.2
     container_name: pensando-elastiflow
     restart: 'unless-stopped'
     ports:
       - target: 9995
         published: 9995
         protocol: udp
-    networks: ['elk-stack']
+    network_mode: "host"
     depends_on: ['elasticsearch']
     volumes:
       - ./data/elastiflow:/etc/elastiflow
@@ -259,7 +259,7 @@ services:
       #EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_PIPELINE_FINAL: '_none'
 
       # A comma separated list of Elasticsearch nodes to use. DO NOT include "http://" or "https://"
-      EF_OUTPUT_ELASTICSEARCH_ADDRESSES: '127.0.0.1:9200'
+      EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
       EF_OUTPUT_ELASTICSEARCH_USERNAME: 'elastic'
       EF_OUTPUT_ELASTICSEARCH_PASSWORD: 'changeme'
       #EF_OUTPUT_ELASTICSEARCH_CLOUD_ID: ''

@@ -31,8 +31,6 @@ If these do not match your current install, [check one of the other branches](ht
 
 ---
 
-  #### Documented version
-  To get up and running with Pensando's ELK implementation, but need a bit more guidance than a basic readme, [click here](https://pensando.gitlab.io/tbd/siem/elastic/elk-pensando/index.html)
 
   #### Quick Start
   NOTE: Use this if you are running on a *nix system, don't need docker(-compose) help and understand basic ELK admin
@@ -59,7 +57,24 @@ If these do not match your current install, [check one of the other branches](ht
       echo vm.max_map_count=262144 | sudo tee -a /etc/sysctl.conf
       ```
 
-  6. Run
+  6. If you are going to collect IPFix packets, update the following lines in the docker-compose.yml file with your information:
+
+
+        Change false to true
+        ``` bash
+            EF_OUTPUT_ELASTICSEARCH_ENABLE: 'false'
+        ```
+            
+        Change the "CHANGEME" in this line to the IP address of your system.  Do not use localhost or the loopback, it will not work
+        ``` bash
+            EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
+        ```
+
+  7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/ taormina.conf file in the input section at the top)*
+
+  8. If collecting IPFix, use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*     
+
+  10. Run
 
      If using docker-compose v1 (standalone)
 
@@ -69,21 +84,17 @@ If these do not match your current install, [check one of the other branches](ht
 
      `docker compose up --detach`
 
-  7. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
+  11. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
 
      `curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog?pretty' -d @./elasticsearch/pensando_fwlog_mapping.json`
 
-  8. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
+  12. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
 
-  9. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
+  13. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
 
- 10. In Kibana, import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
+  14. If collecting IPFix, in Kibana import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
 
- 11. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/taormina.conf file in the input section at the top)*
-
- 12. Using PSM, point your DSS IPFix flows at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
-
- 13. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
+  15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 
 *NOTE: It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
@@ -91,4 +102,4 @@ If these do not match your current install, [check one of the other branches](ht
 If you need help or have questions, you can [email us](mailto:contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) and we will get back to you as soon as we can
 
 ## Support Policy
-The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando).
+The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and AMD Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando).
