@@ -28,7 +28,7 @@ This branch works with the following software.
 CXOS: 10.12.x <br/>
 PSM:  1.59.0-50 or later
 
-If these do not match your current install, [check one of the other branches](https://gitlab.com/pensando/tbd/siem/elastic/elk-pensando/-/branches)
+If these do not match your current install, [check one of the other branches](https://github.com/amd/cx10000-elastic/branches)
 
 ---
 
@@ -63,7 +63,7 @@ If these do not match your current install, [check one of the other branches](ht
 
         Change false to true
         ``` bash
-            EF_OUTPUT_ELASTICSEARCH_ENABLE: 'false'
+            EF_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
         ```
             
         Change the "CHANGEME" in this line to the IP address of your system.  Do not use localhost or the loopback, it will not work
