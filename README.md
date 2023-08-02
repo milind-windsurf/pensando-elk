@@ -4,8 +4,8 @@
 ELK based analytics for Pensado Systems
 
 This repository is the starting point for building and utlizing the Elasticstack for monitoring and analyzing
-data, both about and traversing, the Pensando DSS(es) - DSC(s) coming soon - within your environment.  The purpose is to consolidate the
-applications and tools used for said monitoring and analysis and deploy them in an automated fashion.
+data, both about and traversing, the Pensando DSS(es) within your environment.  The purpose is to consolidate the
+applications and tools used for said monitoring and analysis and deploy them in an easy fashion.
 
 Instantiation can be done on any system with docker and docker-compose installed.
 
