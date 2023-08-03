@@ -23,7 +23,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 Each branch has it's own README that has release specific information and configuration.  Please select the branch that you will use from the dropdown in github or checkout the correct branch and view that README for any information pertaining to that particular release.  
 
-The latest branch is aoscx_10.12 and supports the following
+The latest branch is aoscx_10.12 and supports the following <br/>
 CXOS: 10.12.x <br/>
 PSM:  1.59.0-50 or later
 
