@@ -14,7 +14,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 :warning: <span style="color:yellow">**WARNING**</span> :warning:
 
-<mark>DO NOT RUN *ANTHING* AS ROOT DURING INSTALL OR CONFIGURATION!!!  IT WILL NOT WORK. </mark>
+<mark>DO NOT RUN *ANYTHING* AS ROOT/SUDO DURING INSTALL OR CONFIGURATION !!!  <br/> IT WILL NOT WORK. </mark>
 
 <br/>
 
