@@ -34,21 +34,23 @@ If these do not match your current install, [check one of the other branches](ht
 <mark>Please *fully* read the Support Policy below if you have any issues/questions with the installation</mark>
 
   #### System Requirements
-  This is a POC/demo implementation only.  Parts (configurations and schemas) can be used for production, but the underlying infra (ELK) should only be used in a lab situation.  It is not built to scale to anything past a couple switches with paltry amounts of workloads.  The AMD Pensando Technical Business Development team is more than happy to help when a production instance is needed and can advise on how the AMD Pensando configurations and settings need to be applied.
+  This is a POC/demo implementation only.  Some aspects (configurations and schemas) can be used for production, but the underlying infra (ELK) should only be used in a lab situation.  It is not built to scale to anything past a couple switches with paltry amounts of workloads.  The AMD Pensando Technical Business Development team is more than happy to help when a production instance is needed and can advise on how the AMD Pensando configurations and settings need to be applied.
+  
   There are 2 recommended requirements because each deals with different scenarios.  The "minimum" is what you will need for 1 CX10K and no more than 12 workloads attached just doing basic connectivity tests, web tier apps and the like.  The "large" is what you would use for 1 CX10K with more than 12, but less than 48, workloads or multiple CX10Ks (again with no more than 48 workloads total) doing connectivity tests along with a more "normal" DC traffic pattern (i.e. hundreds of flows/sec).  
+  
   The HDD recommendations will allow for each to store both syslog and ipfix data for a total of 30 days before deletion.  This can be adjusted on your data retention requirements and whether or not both telemetry systems are sending to the ELK stack.
 
   **Minimum Requirements**
-  > 4 vCPU
-  > 16GB RAM
-  > 512GB HDD
+  > 4 vCPU <br/>
+  > 16GB RAM  <br/>
+  > 512GB HDD  <br/>
 
   <br/>
 
   **Large Requirements**
-  > 6 vCPU
-  > 32GB RAM
-  > 1TB HDD
+  > 6 vCPU  <br/>
+  > 32GB RAM  <br/>
+  > 1TB HDD  <br/>
 
   <br/>
   
