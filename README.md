@@ -14,8 +14,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 :warning: <span style="color:yellow">**WARNING**</span> :warning:
 
-<mark>DO NOT RUN DOCKER AS ROOT!!!  IT WILL NOT WORK. </mark>
-<mark>DO NOT DO *ANYTHING* AS ROOT.  NEVER SUDO TO INSTALL OR CONFIGURE THIS, EVERYTHING BREAKS!!! </mark>
+<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT!!!  IT WILL NOT WORK. </mark>
 
 
 <br/>
@@ -23,7 +22,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 ---
 **NOTE**
 
-This branch works with the following software.
+This branch works with the following software. <br/>
 
 CXOS: 10.12.x <br/>
 PSM:  1.59.0-50 or later
@@ -31,13 +30,19 @@ PSM:  1.59.0-50 or later
 If these do not match your current install, [check one of the other branches](https://github.com/amd/cx10000-elastic/branches)
 
 ---
-
+  ### Please fully read the Support Policy below if you are having problems installing or configuring this
 
   #### Installation and running
- 
-  1. Clone this repository
 
-  2. Change into the directory where it is stored
+  1. Verify you are on the correct branch before starting
+        ```
+        git branch
+        ```
+
+  2. If you are not, use the following command to switch to the correct branch:
+        ```
+        git checkout aoscx_10.12
+        ```
 
   3. run the following command (change 8.6.2 if the version of ELK you want is different):
       ```
@@ -65,7 +70,7 @@ If these do not match your current install, [check one of the other branches](ht
         ``` bash
             EF_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
         ```
-            
+
         Change the "CHANGEME" in this line to the IP address of your system.  Do not use localhost or the loopback, it will not work
         ``` bash
             EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
@@ -73,7 +78,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/ taormina.conf file in the input section at the top)*
 
-  8. If collecting IPFix, use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*     
+  8. If collecting IPFix, use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
 
   10. Run
 
@@ -99,8 +104,5 @@ If these do not match your current install, [check one of the other branches](ht
 
 *NOTE: It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
-## Support
-If you need help or have questions, you can [email us](mailto:contact-project+pensando-tbd-elastic-pensando-elk-25427733-issue-@incoming.gitlab.com) and we will get back to you as soon as we can
-
 ## Support Policy
-The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and AMD Pensando will contribute our expertise as and when possible. We do not provide technical support or help in using or troubleshooting the components of the project through our normal support options. Unless explicitly tagged, all projects or work posted in our GitLab repository (at https://gitlab.com/Pensando).
+The code and templates in the repo are released under an as-is, best effort, support policy. These scripts should be seen as community supported and AMD Pensando will contribute our expertise as and when possible. The absolute best (and quickest) way to get help/support is to [file an issue](https://github.com/amd/cx10000-elastic/issues).  Any other attempts at contact will probably be lost in the ether and you will rarely, if ever, hear back.
