@@ -24,10 +24,10 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 This branch works with the following software. <br/>
 
-CXOS: 10.12.x <br/>
+CXOS: 10.13.x <br/>
 PSM:  1.59.0-50 or later
 
-If these do not match your current install, [check one of the other branches](https://github.com/amd/cx10000-elastic/branches)
+If these do not match your current install, [check one of the other branches](https://github.com/amd/pensando-elk/branches)
 
 ---
   ### Please fully read the Support Policy below if you are having problems installing or configuring this
@@ -41,12 +41,12 @@ If these do not match your current install, [check one of the other branches](ht
 
   2. If you are not, use the following command to switch to the correct branch:
         ```
-        git checkout aoscx_10.12
+        git checkout aoscx_10.13
         ```
 
   3. run the following command (change 8.6.2 if the version of ELK you want is different):
       ```
-      echo "TAG=8.6.2" >.env
+      echo "TAG=8.11.0" >.env
       ```
 
   4. Create the following directories and give them full write permissions (777 works)
@@ -76,7 +76,7 @@ If these do not match your current install, [check one of the other branches](ht
             EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
         ```
 
-  7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/ taormina.conf file in the input section at the top)*
+  7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)*
 
   8. If collecting IPFix, use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
 
