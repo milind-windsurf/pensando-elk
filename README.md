@@ -98,7 +98,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   13. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
 
-  14. If collecting IPFix, in Kibana import ```./kibana/kibana-7.17.x-flow-codex.ndjson``` into your saved objects
+  14. If collecting IPFix, in Kibana import ```./kibana/kibana-8.2.x-flow-codex.ndjson``` into your saved objects
 
   15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 
