@@ -76,7 +76,7 @@ services:
       - target: 9995
         published: 9995
         protocol: udp
-    network_mode: "host"
+    networks: ['elk-stack']
     depends_on: ['elasticsearch']
     volumes:
       - ./data/elastiflow:/etc/elastiflow
