@@ -96,7 +96,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   12. Give it about 5 minutes to start up and point your browser to the ip of your ELK cluster, port 5601
 
-  13. In Kibana, import ```./kibana/pensando-dss-elk.ndjson``` into your saved objects
+  13. In Kibana, import ```./kibana/pensando-dss-10.13-syslog.ndjson``` into your saved objects
 
   14. If collecting IPFix, in Kibana import ```./kibana/kibana-8.2.x-flow-codex.ndjson``` into your saved objects
 
