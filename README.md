@@ -25,7 +25,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 This branch works with the following software. <br/>
 
 CXOS: 10.14.x <br/>
-PSM:  1.59.0-50 or later
+PSM:  1.83.1-T-9 or later
 
 If these do not match your current install, [check one of the other branches](https://github.com/amd/pensando-elk/branches)
 
@@ -46,7 +46,7 @@ If these do not match your current install, [check one of the other branches](ht
 
   3. run the following command (change 8.6.2 if the version of ELK you want is different):
       ```
-      echo "TAG=8.11.0" >.env
+      echo "TAG=8.13.4" >.env
       ```
 
   4. Create the following directories and give them full write permissions (777 works)
@@ -64,6 +64,10 @@ If these do not match your current install, [check one of the other branches](ht
       ```
 
   6. If you are going to collect IPFix packets, update the following lines in the docker-compose.yml file with your information:
+
+  :warning: <span style="color:yellow">**WARNING**</span> :warning:
+
+  <mark>IPFIX in the 10.14.0001 release has a known bug and will most likely not work. </mark>
 
 
         Change false to true
