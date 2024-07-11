@@ -14,7 +14,14 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 :warning: <span style="color:yellow">**WARNING**</span> :warning:
 
-<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT!!!  IT WILL NOT WORK. </mark>
+<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT!!!  IT WILL NOT WORK. </mark> <br/>
+To run docker as a non-root user, simply add the user to the docker group, then log out and log back in.
+
+```
+sudo usermod -aG docker ${USER}
+```
+
+
 
 
 <br/>
