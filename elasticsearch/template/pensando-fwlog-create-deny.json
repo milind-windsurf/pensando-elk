@@ -3,7 +3,7 @@
     "settings": {
       "index": {
         "lifecycle": {
-          "name": "pensando_deny_create"
+          "name": "pensando_create_deny"
         },
         "number_of_replicas": "0",
         "refresh_interval": "5s"

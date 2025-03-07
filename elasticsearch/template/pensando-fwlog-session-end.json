@@ -3,7 +3,7 @@
     "settings": {
       "index": {
         "lifecycle": {
-          "name": "pensando_allow_delete"
+          "name": "pensando_session_end"
         },
         "number_of_replicas": "0",
         "refresh_interval": "5s"

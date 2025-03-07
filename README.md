@@ -119,20 +119,21 @@ If these do not match your current install, [check one of the other branches](ht
 
   10. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
 
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-empty-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-session-end.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-allow-create?pretty' -d @./elasticsearch/template/pensando-fwlog-create-allow.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-allow-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-allow-delete.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-deny-create?pretty' -d @./elasticsearch/template/pensando-fwlog-create-deny.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-session-end?pretty' -d @./elasticsearch/template/pensando-fwlog-session-end.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-create-allow?pretty' -d @./elasticsearch/template/pensando-fwlog-create-allow.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-empty-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-empty-delete.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-create-deny?pretty' -d @./elasticsearch/template/pensando-fwlog-create-deny.json
+				
 
 
 
   11. From the install directory, load the elasticsearch index retention settings for the Pensando DSS Firewall index-pattern using the following cli:
 
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_empty_delete' -d @./elasticsearch/policy/pensando_empty_delete.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_allow_create' -d @./elasticsearch/policy/pensando_create_allow.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_allow_delete' -d @./elasticsearch/policy/pensando_session_end.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_deny_create' -d @./elasticsearch/policy/pensando_create_deny.json
-				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/elastiflow_maintenance' -d @./elasticsearch/policy/elastiflow_maintenance.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_create_allow' -d @./elasticsearch/policy/pensando_create_allow.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_session_end' -d @./elasticsearch/policy/pensando_session_end.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_create_deny' -d @./elasticsearch/policy/pensando_create_deny.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/elastiflow' -d @./elasticsearch/policy/elastiflow.json
 				
 				
 
