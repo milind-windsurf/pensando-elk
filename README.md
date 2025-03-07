@@ -31,8 +31,8 @@ sudo usermod -aG docker ${USER}
 
 This branch works with the following software. <br/>
 
-CXOS: 10.14.x <br/>
-PSM:  1.83.1-T-9 or later
+CXOS: 10.15.x <br/>
+PSM:  1.100.2-T-8 or later
 
 If these do not match your current install, [check one of the other branches](https://github.com/amd/pensando-elk/branches)
 
@@ -48,12 +48,12 @@ If these do not match your current install, [check one of the other branches](ht
 
   2. If you are not, use the following command to switch to the correct branch:
         ```
-        git checkout aoscx_10.14.0001
+        git checkout develop
         ```
 
   3. run the following command (change 8.6.2 if the version of ELK you want is different):
       ```
-      echo "TAG=8.13.4" >.env
+      echo "TAG=8.16.1" >.env
       ```
 
   4. Create the following directories and give them full write permissions (777 works)
@@ -72,10 +72,6 @@ If these do not match your current install, [check one of the other branches](ht
 
   6. If you are going to collect IPFix packets, update the following lines in the docker-compose.yml file with your information:
 
-  :warning: <span style="color:yellow">**WARNING**</span> :warning:
-
-  <mark>IPFIX in the 10.14.0001 release has a known bug and will most likely not work. </mark>
-
 
         Change false to true
         ``` bash
@@ -86,6 +82,17 @@ If these do not match your current install, [check one of the other branches](ht
         ``` bash
             EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
         ```
+        Enable daily log file rotation by uncommenting the line
+        ``` bash
+           EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'
+        ```
+      Or:
+      ```
+      sed -i.bak  's/EF_OUTPUT_ELASTICSEARCH_ENABLE: '\''false'\''/EF_OUTPUT_ELASTICSEARCH_ENABLE: '\''true'\''/' docker-compose.yml
+      sed -i.bak -r "s/EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'/EF_OUTPUT_ELASTICSEARCH_ADDRESSES: '$localip:9200'/" docker-compose.yml
+      sed -i.bak -r "s/#EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'/EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'/" docker-compose.yml
+		```
+		
 
   7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)
 
@@ -112,31 +119,42 @@ If these do not match your current install, [check one of the other branches](ht
 
   10. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
 
-     curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog?pretty' -d @./elasticsearch/pensando_fwlog_mapping.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-empty-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-session-end.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-allow-create?pretty' -d @./elasticsearch/template/pensando-fwlog-create-allow.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-allow-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-allow-delete.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-deny-create?pretty' -d @./elasticsearch/template/pensando-fwlog-create-deny.json
 
 
 
   11. From the install directory, load the elasticsearch index retention settings for the Pensando DSS Firewall index-pattern using the following cli:
 
-    curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_snapshot/my_fs_backup' -d @./elasticsearch/pensando_fs.json
-    curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_slm/policy/pensando' -d @./elasticsearch/pensando_slm.json
-    curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando' -d @./elasticsearch/pensando_ilm.json
-    curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_slm/policy/elastiflow' -d @./elasticsearch/elastiflow_slm.json
-    curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/elastiflow' -d @./elasticsearch/elastiflow_ilm.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_empty_delete' -d @./elasticsearch/policy/pensando_empty_delete.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_allow_create' -d @./elasticsearch/policy/pensando_create_allow.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_allow_delete' -d @./elasticsearch/policy/pensando_session_end.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_deny_create' -d @./elasticsearch/policy/pensando_create_deny.json
+				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/elastiflow_maintenance' -d @./elasticsearch/policy/elastiflow_maintenance.json
+				
+				
 
+  12. From the install directory, load the Kibana dashboard for syslog:
 
+				curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/pensando-dss-10.15.x-syslog.ndjson
+				
+  </br>
 
-  12. Point your browser to the ip of your ELK cluster, port 5601
+  13. From the install directory, load the Kibana dashboard IPFIX:
+
+				curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/kibana-8.2.x-flow-codex.ndjson
+				
+  </br>
+
+				
+
+  14. Point your browser to the ip of your ELK cluster, port 5601
 
   </br>
 
-  13. In Kibana, import ```./kibana/pensando-dss-10.14.x-syslog.ndjson``` into your saved objects
-
-  </br>
-
-  14. If collecting IPFix, in Kibana import ```./kibana/kibana-8.2.x-flow-codex.ndjson``` into your saved objects
-
-  </br>
+  
 
   15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 

@@ -195,35 +195,35 @@ filter {
     code => "if event.get('[source][vlan]').nil?; event.set('[source][vlan]',9999);end"
   }
 
-#  # Perform conversions for ECS compatibility and remove items we no longer need
-#  mutate {
-#      add_field => { "[ecs][version]" => "8.0.0" }
-#      add_field => { "[event][kind]" => "state" }
-#      add_field => { "[network][vlan]" => "%{[source][vlan]}" }
-#      add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
-#      add_field => { "[session][total_packets]" => "%{[network][packets]}" }
-#      rename => { "message" => "[event][original]" }
-#      rename => { "type" => "[log][protocol]" }
-#      remove_field => [ "csv_message" ]
-#      remove_field => [ "protocol" ]
-#      remove_field => [ "timestamp" ]
-#
-#    }
-
-  # Remove fields not need for space reasons. but no longer ECS compatibility
+  # Perform conversions for ECS compatibility and remove items we no longer need
   mutate {
       add_field => { "[ecs][version]" => "8.0.0" }
       add_field => { "[event][kind]" => "state" }
       add_field => { "[network][vlan]" => "%{[source][vlan]}" }
       add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
       add_field => { "[session][total_packets]" => "%{[network][packets]}" }
+      rename => { "message" => "[event][original]" }
       rename => { "type" => "[log][protocol]" }
       remove_field => [ "csv_message" ]
       remove_field => [ "protocol" ]
       remove_field => [ "timestamp" ]
-      remove_field => [ "message" ]
 
     }
+
+#  # Remove fields not need for space reasons. but no longer ECS compatibility
+#  mutate {
+#      add_field => { "[ecs][version]" => "8.0.0" }
+#      add_field => { "[event][kind]" => "state" }
+#      add_field => { "[network][vlan]" => "%{[source][vlan]}" }
+#      add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
+#      add_field => { "[session][total_packets]" => "%{[network][packets]}" }
+#      rename => { "type" => "[log][protocol]" }
+#      remove_field => [ "csv_message" ]
+#      remove_field => [ "protocol" ]
+#      remove_field => [ "timestamp" ]
+#      remove_field => [ "message" ]
+#
+#    }
     
 
 }
