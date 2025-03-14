@@ -218,10 +218,11 @@ filter {
 #      add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
 #      add_field => { "[session][total_packets]" => "%{[network][packets]}" }
 #      rename => { "type" => "[log][protocol]" }
+#      rename => { "message" => "[event][original]" }
 #      remove_field => [ "csv_message" ]
 #      remove_field => [ "protocol" ]
 #      remove_field => [ "timestamp" ]
-#      remove_field => [ "message" ]
+#      remove_field => [ "[event][original]" ]
 #
 #    }
     
