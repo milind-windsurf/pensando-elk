@@ -50,7 +50,7 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 :warning: <span style="color:yellow">**WARNING**</span> :warning:
 
-<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT!!!  IT WILL NOT WORK. </mark> <br/>
+<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT  -  IT WILL NOT WORK. </mark> <br/>
 To run docker as a non-root user, simply add the user to the docker group, then log out and log back in.
 
 ```
@@ -86,7 +86,7 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
         ```
 </br>
 
-  3. run the following command (change 8.16.1 if the version of ELK you want is different):
+  3. Run the following command to set up the ELK version to run:
       ```
       echo "TAG=8.16.1" >.env
       ```
@@ -118,15 +118,15 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
       ```
 
       The previous commands do the following in the docker-compose.yml file for Elastiflow:
-        Enables Elasticsearch output for Elastiflow:                EF_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
-        Change the "CHANGEME" to the IP address of your system:     EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
-        Enable daily log file rotation:                             EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'
-</br>
+        - Enables Elasticsearch output for Elastiflow:                EF_OUTPUT_ELASTICSEARCH_ENABLE: 'true'
+        - Change the "CHANGEME" to the IP address of your system:     EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'
+        - Enable daily log file rotation:                             EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'
+</br></br>
 
   7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)
-</br>
+</br></br>
 
-  8. If collecting IPFix, use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
+  8. If collecting IPFix (else skip to step 9), use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
 
 </br>
 
@@ -141,7 +141,7 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
      `docker compose up --detach`
   </br>
 
-  **NOTE:** Give it about 5 minutes to start up
+      **NOTE:** Give it about 5 minutes to start up
 
   </br>
 
@@ -167,23 +167,25 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
 
   12. From the install directory, load the Kibana dashboard for syslog:
         ```
-        curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/pensando-dss-10.15.x-syslog.ndjson
+        curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@./kibana/pensando-dss-10.15.x-syslog.ndjson
         ```
   </br>
 
   13. From the install directory, load the Kibana dashboard IPFIX:
         ```
-        curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/kibana-8.2.x-flow-codex.ndjson
+        curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@./kibana/kibana-8.2.x-flow-codex.ndjson
         ```
   </br>
 
-  14. Point your browser to the ip of your ELK cluster, port 5601
+   14. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 
   </br>
 
-  15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
+  15. Point your browser to the ip of your ELK cluster, port 5601
 
   </br>
+
+
 
 *NOTE: It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
