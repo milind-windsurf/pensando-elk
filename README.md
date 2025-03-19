@@ -13,24 +13,47 @@ deploy them in an easy fashion to get a demo/poc up and running in very little t
 
 **NOTE**
 </br>
-This repository for is for demonstration and proof of concept only.  It is not intended as a starting point for an
-Elasticstack instance in a production environment.  If you wish to collect and monitor the DPU telemetry in a production
-enviornment, please contact your AMD representative and they will get our Technical Business Development team to help
-you.
 
+<mark>Please *fully* read the Support Policy below if you have any issues/questions with the installation</mark>
 
-</br></br>
+  #### System Requirements
+  This is a POC/demo implementation only.  Some aspects (configurations and schemas) can be used for production, but the
+   underlying infra (Elasticstack) should only be used in a lab situation.  It is not built to scale to anything past a
+   couple switches with paltry amounts of workloads.  The AMD Pensando Technical Business Development team is more than
+   happy to help when a production instance is needed and can advise on how the AMD Pensando configurations and settings
+    need to be applied to a production instance of Elasticstack.
 
-## Install and Run
+  There are 2 recommended requirements because each deals with different scenarios.  The "minimum" is what you will need
+   for 1 CX10K and no more than 12 workloads attached just doing basic connectivity tests, web tier apps and the like.
+   The "large" is what you would use for 1 CX10K with more than 12, but less than 48, workloads or multiple CX10Ks
+   (again with no more than 48 workloads total) doing connectivity tests along with a more "normal" DC traffic pattern
+   (i.e. hundreds of flows/sec).
+
+  The HDD recommendations will allow for each to store both syslog and ipfix data for a total of 30 days before deletion.
+  This can be adjusted on your data retention requirements and whether or not both telemetry systems are sending to the ELK stack.
+
+  **Minimum Requirements**
+  > 4 vCPU <br/>
+  > 16GB RAM  <br/>
+  > 256GB HDD  <br/>
+  > Ubuntu 22.04 or newer <br/>
+
+  <br/>
+
+  **Large Requirements**
+  > 6 vCPU  <br/>
+  > 32GB RAM  <br/>
+  > 512GB HDD  <br/>
+  > Ubuntu 22.04 or newer <br/>
+
+  <br/>
+
+#### Installation and running
 There are two options to install this repository.  Please read the options below and decide which is best for you.
 
-Before starting, you must have a Ubuntu 20.04 (or newer) VM with the following minimum specifications:
- - 4 vCPU
- - 16GB RAM
- - 256GB HDD
 
+> #### OPTION 1 - Mostly Automated <br/>
 
-### OPTION 1 - mostly automated
 This option will download and run an all-in-one script that will install not only this repository, but will also install
 all of the necessary pre-requisites (docker, docker-compose, etc.) and configure your Ubuntu based system for Elasticstack.
 
@@ -41,7 +64,8 @@ To run this, please [use the ELK_single_script repository](https://github.com/td
 make sure to read the README before starting.
 
 
-### OPTION 2 - manual installation
+> #### OPTION 2 - Manual Installation <br/>
+
 This option is for those that want to run the AMD Pensando Elasticstack but also have an interest in how it's actually
 built and how things are configured.  It is suggested that you use this installation method if you plan on administering
 your Elasticstack "cluster" in your demo/poc environment.
@@ -76,25 +100,31 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
   #### Installation and running
 </br>
 
-  1. Verify you are on the correct branch before starting
+  1. Clone this repository and cd into the directory where it was cloned
+        ```
+        git clone https://github.com/amd/pensando-elk.git
+        cd pensando-elk
+        ```
+
+  2. Verify you are on the correct branch before starting  (you want to be on main or aoscx_10.15.x)
         ```
         git branch
         ```
 </br>
 
-  2. If you are not, use the following command to switch to the correct branch:
+  3. If you are not on the correct branch, use the following command to switch to the correct branch:
         ```
-        git checkout aoscx_10.15.x
+        git checkout main
         ```
 </br>
 
-  3. Run the following command to set up the ELK version to run:
+  4. Run the following command to set up the ELK version to run:
       ```
       echo "TAG=8.16.1" >.env
       ```
 </br>
 
-  4. Create the following directories and give them full write permissions (777 works)
+  5. Create the following directories and give them full write permissions (777 works)
       ```
       ./data/es_backups
       ./data/pensando_es
@@ -103,14 +133,14 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
       ```
 </br>
 
-  5. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
+  6. Ensure that you update ```vm.max_map_count``` on your system so that elasticsearch can store it's inidices correctly
       ```
       sudo sysctl -w vm.max_map_count=262144
       echo vm.max_map_count=262144 | sudo tee -a /etc/sysctl.conf
       ```
 </br>
 
-  6. If you are going to collect IPFix packets.  If not, then skip to step 7.
+  7. If you are going to collect IPFix packets.  If not, then skip to step 7.
 
       ```
       localip=`hostname -I | cut -d " " -f1`
@@ -125,14 +155,14 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
         - Enable daily log file rotation:                             EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'
 </br></br>
 
-  7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)
+  8. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)
 </br></br>
 
-  8. If collecting IPFix (else skip to step 9), use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
+  9. If collecting IPFix (else skip to step 9), use PSM point your DSS IPFix flows (flow export policy) at the IP of your ELK cluster, UDP port 9995  (this port number can be changed in the docker-compose file using the EF_FLOW_SERVER_UDP_PORT parameter)*
 
 </br>
 
-  9. Run
+  10. Run
 
      If using docker-compose v1 (standalone)
 
@@ -147,7 +177,7 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
 
   </br>
 
-  10. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
+  11. From the install directory, load the elasticsearch schema (mappings) for the Pensando DSS Firewall index-pattern using the following cli:
         ```
         curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-session-end?pretty' -d @./elasticsearch/template/pensando-fwlog-session-end.json
         curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-create-allow?pretty' -d @./elasticsearch/template/pensando-fwlog-create-allow.json
@@ -157,7 +187,7 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
 
 
 
-  11. From the install directory, load the elasticsearch index retention settings for the Pensando DSS Firewall index-pattern using the following cli:
+  12. From the install directory, load the elasticsearch index retention settings for the Pensando DSS Firewall index-pattern using the following cli:
         ```
         curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_empty_delete' -d @./elasticsearch/policy/pensando_empty_delete.json
         curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_create_allow' -d @./elasticsearch/policy/pensando_create_allow.json
@@ -167,30 +197,27 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
         ```
 
 
-  12. From the install directory, load the Kibana dashboard for syslog:
+  13. From the install directory, load the Kibana dashboard for syslog:
         ```
         curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@./kibana/pensando-dss-10.15.x-syslog.ndjson
         ```
   </br>
 
-  13. From the install directory, load the Kibana dashboard IPFIX:
+  14. From the install directory, load the Kibana dashboard IPFIX:
         ```
         curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@./kibana/kibana-8.2.x-flow-codex.ndjson
         ```
   </br>
 
-   14. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of the containers.
+  15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of the containers.
   </br>
 
-  15. Point your browser to the ip of your ELK cluster, port 5601 </br>
+  16. Point your browser to the ip of your ELK cluster, port 5601 </br>
       **NOTE:**
       It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
 
   </br>
-
-
-
 
 </br>
 
