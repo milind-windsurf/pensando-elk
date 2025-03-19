@@ -1,13 +1,31 @@
 {
-  "index_patterns": ["pensando-fwlog-*"],
-  "template" : {
-    "settings" : {
-      "index.refresh_interval" : "5s"
+  "template": {
+    "settings": {
+      "index": {
+        "lifecycle": {
+          "name": "pensando_create_deny"
+        },
+        "number_of_replicas": "0",
+        "refresh_interval": "5s"
+      }
     },
     "mappings": {
       "_source": {
-          "enabled": true
+        "excludes": [],
+        "includes": [],
+        "enabled": true
       },
+      "_routing": {
+        "required": false
+      },
+      "dynamic": true,
+      "numeric_detection": false,
+      "date_detection": true,
+      "dynamic_date_formats": [
+        "strict_date_optional_time",
+        "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+      ],
+      "dynamic_templates": [],
       "properties": {
         "@timestamp": {
           "type": "date"
@@ -16,6 +34,7 @@
           "type": "byte"
         },
         "destination": {
+          "type": "object",
           "properties": {
             "ip": {
               "type": "ip"
@@ -26,13 +45,14 @@
           }
         },
         "dsx": {
+          "type": "object",
           "properties": {
             "device_name": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -40,8 +60,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -49,8 +69,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -58,8 +78,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -67,27 +87,29 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "ecs": {
+          "type": "object",
           "properties": {
             "version": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "event": {
+          "type": "object",
           "properties": {
             "created": {
               "type": "date"
@@ -96,8 +118,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -108,8 +130,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -117,14 +139,15 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "host": {
+          "type": "object",
           "properties": {
             "ip": {
               "type": "ip"
@@ -133,21 +156,22 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "log": {
+          "type": "object",
           "properties": {
             "msg_id": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -155,8 +179,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -164,8 +188,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -173,8 +197,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -182,8 +206,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -191,21 +215,22 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "nat": {
+          "type": "object",
           "properties": {
             "dst_xltd_ip": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -213,8 +238,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -222,14 +247,15 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "network": {
+          "type": "object",
           "properties": {
             "bytes": {
               "type": "long"
@@ -241,8 +267,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -250,8 +276,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -259,21 +285,22 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "security": {
+          "type": "object",
           "properties": {
             "policy_display_name": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -281,8 +308,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -290,8 +317,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -299,8 +326,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -308,21 +335,22 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             }
           }
         },
         "session": {
+          "type": "object",
           "properties": {
             "action": {
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -330,8 +358,8 @@
               "type": "text",
               "fields": {
                 "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
+                  "ignore_above": 256,
+                  "type": "keyword"
                 }
               }
             },
@@ -347,24 +375,25 @@
             "rflow_pkts": {
               "type": "long"
             },
+            "state": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "ignore_above": 256,
+                  "type": "keyword"
+                }
+              }
+            },
             "total_bytes": {
               "type": "long"
             },
             "total_packets": {
               "type": "long"
-            },
-            "state": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
             }
           }
         },
         "source": {
+          "type": "object",
           "properties": {
             "ip": {
               "type": "ip"
@@ -381,12 +410,18 @@
           "type": "text",
           "fields": {
             "keyword": {
-              "type": "keyword",
-              "ignore_above": 256
+              "ignore_above": 256,
+              "type": "keyword"
             }
           }
         }
       }
+    },
+    "aliases": {
+      "my_alias": {}
     }
-  }
+  },
+  "index_patterns": [
+    "pensando-fwlog-create-deny*"
+  ]
 }

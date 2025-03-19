@@ -1,20 +1,19 @@
-version: '3.7'
 services:
   # The environment variable "TAG" is used throughout this file to
   # specify the version of the images to run. The default is set in the
   # '.env' file in this folder. It can be overridden with any normal
   # technique for setting environment variables, for example:
   #
-  #   TAG=6.0.0-beta1 docker-compose up
+  #   TAG=8.11.0 docker-compose up
   #
   # REF: https://docs.docker.com/compose/compose-file/#variable-substitution
   #
   # Also be sure to set the ELASTIC_VERSION variable. For released versions,
   # ${TAG} and ${ELASTIC_VERSION} will be identical, but for pre-release
   # versions, ${TAG} might contain an extra build identifier, like
-  # "6.0.0-beta1-3eab5b40", so a full invocation might look like:
+  # "8.11.0-beta1-3eab5b40", so a full invocation might look like:
   #
-  #   ELASTIC_VERSION=6.0.0-beta1 TAG=6.0.0-beta1-3eab5b40 docker-compose up
+  #   ELASTIC_VERSION=8.11.0-beta1 TAG=8.11.0-beta1-3eab5b40 docker-compose up
   #
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
@@ -28,6 +27,7 @@ services:
       - ES_JAVA_OPTS=-Xms4g -Xmx4g
       - xpack.security.enabled=false
       - action.destructive_requires_name=false
+      - path.repo=/usr/share/elasticsearch/backups
     ulimits:
       nproc: 65535
       memlock:
@@ -69,14 +69,14 @@ services:
 
   # ElastiFlow Unified Collector
   flow-collector:
-    image: elastiflow/flow-collector:6.2.2
+    image: elastiflow/flow-collector:7.0.0
     container_name: pensando-elastiflow
     restart: 'unless-stopped'
     ports:
       - target: 9995
         published: 9995
         protocol: udp
-    network_mode: "host"
+    networks: ['elk-stack']
     depends_on: ['elasticsearch']
     volumes:
       - ./data/elastiflow:/etc/elastiflow
