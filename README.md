@@ -19,7 +19,7 @@ enviornment, please contact your AMD representative and they will get our Techni
 you.
 
 
-</br></br></br>
+</br></br>
 
 ## Install and Run
 There are two options to install this repository.  Please read the options below and decide which is best for you.
@@ -30,18 +30,18 @@ Before starting, you must have a Ubuntu 20.04 (or newer) VM with the following m
  - 256GB HDD
 
 
-### Option 1 - mostly automated
+### OPTION 1 - mostly automated
 This option will download and run an all-in-one script that will install not only this repository, but will also install
 all of the necessary pre-requisites (docker, docker-compose, etc.) and configure your Ubuntu based system for Elasticstack.
 
 This is recommended for most users.  It takes care of the heavy lifting and is for those that don't need/want to
 understand the undelying complexities of getting this up and running
 </br>
-To run this, please see the repository located [here](https://github.com/tdmakepeace/ELK_Single_script/tree/main) and
-make sure the read the README before starting.
+To run this, please [use the ELK_single_script repository](https://github.com/tdmakepeace/ELK_Single_script/tree/main) and
+make sure to read the README before starting.
 
 
-### Option 2 - manual installation
+### OPTION 2 - manual installation
 This option is for those that want to run the AMD Pensando Elasticstack but also have an interest in how it's actually
 built and how things are configured.  It is suggested that you use this installation method if you plan on administering
 your Elasticstack "cluster" in your demo/poc environment.
