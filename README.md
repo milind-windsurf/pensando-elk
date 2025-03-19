@@ -50,8 +50,10 @@ Instantiation can be done on any system with docker and docker-compose installed
 
 :warning: <span style="color:yellow">**WARNING**</span> :warning:
 
-<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT  -  IT WILL NOT WORK. </mark> <br/>
-To run docker as a non-root user, simply add the user to the docker group, then log out and log back in.
+<mark>DO NOT RUN THE INSTALL OR CONFIGURATION AS ROOT  -  IT WILL NOT WORK. </mark>
+
+<br/>
+If you don't know how to run docker as a non-root user, simply add the user to the docker group, then log out and log back in.
 
 ```
 sudo usermod -aG docker ${USER}
@@ -59,14 +61,14 @@ sudo usermod -aG docker ${USER}
 <br/>
 
 ---
-**NOTE**
 
 This branch works with the following software. <br/>
 
 CXOS: 10.15.x <br/>
 PSM:  1.100.2-T-8 or later
 
-This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and applicable PSM versions).  If this is not what you are running,[check one of the other branches](https://github.com/amd/pensando-elk/branches)
+This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and applicable PSM versions).  If this is not what you are running,
+ [ check one of the other branches](https://github.com/amd/pensando-elk/branches)
 
 ---
   ### Please fully read the Support Policy below if you are having problems installing or configuring this
@@ -177,17 +179,18 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
         ```
   </br>
 
-   14. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
+   14. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of the containers.
+  </br>
+
+  15. Point your browser to the ip of your ELK cluster, port 5601 </br>
+      **NOTE:**
+      It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
+
 
   </br>
 
-  15. Point your browser to the ip of your ELK cluster, port 5601
-
-  </br>
 
 
-
-*NOTE: It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
 </br>
 
