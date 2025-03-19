@@ -34,29 +34,24 @@ filter {
   {
     dissect {
         mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]},%{[session][close_reason]},%{[source][vrf_name]},%{[destination][vrf_name]},%{[destination][vrf_uuid]},%{[destination][vlan]},%{connection_tracking},%{[source][primary_vlan]},%{[destination][primary_vlan]}'}
-        add_tag => [ "aoscx_10.14.0001" ]
     }
   }
   else if [@metadata][field_count] == 38
   {
     dissect {
         mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]},%{[session][close_reason]},%{[source][vrf_name]},%{[destination][vrf_name]},%{[destination][vrf_uuid]},%{[destination][vlan]},%{connection_tracking}'}
-        add_tag => [ "aoscx_10.13.1000" ]
     }
   }
   else if  [@metadata][field_count] == 37
   {
     dissect {
-        mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]},%{[session][close_reason]},%{[source][vrf_name]},%{[destination][vrf_name]},%{[destination][vrf_uuid]},%{[destination][vlan]}' }
-        add_tag => [ "aoscx_10.13.0005" ]
+        mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]},%{[session][close_reason]},%{[source][vrf_name]},%{[destination][vrf_name]},%{[destination][vrf_uuid]},%{[destination][vlan]}'}
     }
   }
   else if  [@metadata][field_count] == 32
   {
     dissect {
-        mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]}' }
-        add_tag => [ "aoscx_10.12.1000" ]
-    }
+        mapping => { 'csv_message' => '%{timestamp},%{[session][state]},%{[session][action]},%{[source][vrf_uuid]},%{[source][ip]},%{[source][port]},%{[destination][ip]},%{[destination][port]},%{protocol},%{[session][id]},%{[security][policy_id]},%{[security][rule_id]},%{[security][rule_name]},%{[session][iflow_pkts]},%{[session][iflow_bytes]},%{[session][rflow_pkts]},%{[session][rflow_bytes]},%{[source][vlan]},%{[dsx][type]},%{[dsx][sw_ver]},%{[dsx][ser_num]},%{[dsx][device_name]},%{[dsx][unit_id]},%{[log][version]},%{[security][policy_name]},%{[security][policy_display_name]},%{[nat][src_xltd_ip]},%{[nat][dst_xltd_ip]},%{[nat][dst_xltd_port]},%{[security][encrypted]},%{[session][direction]},%{[session][create_reason]}' }    }
   }
   else
   {
@@ -195,22 +190,8 @@ filter {
     code => "if event.get('[source][vlan]').nil?; event.set('[source][vlan]',9999);end"
   }
 
-#  # Perform conversions for ECS compatibility and remove items we no longer need
-#  mutate {
-#      add_field => { "[ecs][version]" => "8.0.0" }
-#      add_field => { "[event][kind]" => "state" }
-#      add_field => { "[network][vlan]" => "%{[source][vlan]}" }
-#      add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
-#      add_field => { "[session][total_packets]" => "%{[network][packets]}" }
-#      rename => { "message" => "[event][original]" }
-#      rename => { "type" => "[log][protocol]" }
-#      remove_field => [ "csv_message" ]
-#      remove_field => [ "protocol" ]
-#      remove_field => [ "timestamp" ]
-#
-#    }
 
-  # Remove fields not need for space reasons. but no longer ECS compatibility
+  # Remove fields not need for space reasons. This removes ECS compatibility
   mutate {
       add_field => { "[ecs][version]" => "8.0.0" }
       add_field => { "[event][kind]" => "state" }
@@ -218,15 +199,12 @@ filter {
       add_field => { "[session][total_bytes]" => "%{[network][bytes]}" }
       add_field => { "[session][total_packets]" => "%{[network][packets]}" }
       rename => { "type" => "[log][protocol]" }
-      rename => { "message" => "[event][original]" }
       remove_field => [ "csv_message" ]
       remove_field => [ "protocol" ]
       remove_field => [ "timestamp" ]
-      remove_field => [ "[event][original]" ]
+      remove_field => [ "message" ]
 
     }
-    
-
 }
 
 output {
@@ -247,7 +225,7 @@ output {
         hosts    => [ 'elasticsearch' ]
         index => "pensando-fwlog-empty-delete-%{+YYYY.MM.dd.HH}"
     }
-   }  
+   }
   else if [session][state] != "flow_create" {
   	elasticsearch {
         hosts    => [ 'elasticsearch' ]
@@ -256,14 +234,3 @@ output {
    }
   #stdout { codec => rubydebug }
 }
-
-
-
-#output {
-#  elasticsearch {
-#        hosts    => [ 'elasticsearch' ]
-#        index => "pensando-fwlog-%{+YYYY.MM.dd.HH}"
-#    }
-#
-#  #stdout { codec => rubydebug }
-#}
