@@ -34,7 +34,7 @@ This branch works with the following software. <br/>
 CXOS: 10.15.x <br/>
 PSM:  1.100.2-T-8 or later
 
-If these do not match your current install, [check one of the other branches](https://github.com/amd/pensando-elk/branches)
+This is backwards compatible with CXOS software 10.13.x and 10.14.x as well.  If this is not what you are running,[check one of the other branches](https://github.com/amd/pensando-elk/branches)
 
 ---
   ### Please fully read the Support Policy below if you are having problems installing or configuring this
@@ -93,7 +93,7 @@ If these do not match your current install, [check one of the other branches](ht
       sed -i.bak -r "s/EF_OUTPUT_ELASTICSEARCH_ADDRESSES: 'CHANGEME:9200'/EF_OUTPUT_ELASTICSEARCH_ADDRESSES: '$localip:9200'/" docker-compose.yml
       sed -i.bak -r "s/#EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'/EF_OUTPUT_ELASTICSEARCH_INDEX_PERIOD: 'daily'/" docker-compose.yml
 		```
-		
+
 
   7. Using PSM, point your DSS firewall syslog (RFC5424) at the IP of your ELK cluster, UDP port 5514  (this number can be changed in the logstash/dss_syslog.conf file in the input section at the top)
 
@@ -124,7 +124,7 @@ If these do not match your current install, [check one of the other branches](ht
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-create-allow?pretty' -d @./elasticsearch/template/pensando-fwlog-create-allow.json
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-empty-delete?pretty' -d @./elasticsearch/template/pensando-fwlog-empty-delete.json
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_index_template/pensando-fwlog-create-deny?pretty' -d @./elasticsearch/template/pensando-fwlog-create-deny.json
-				
+
 
 
 
@@ -135,28 +135,28 @@ If these do not match your current install, [check one of the other branches](ht
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_session_end' -d @./elasticsearch/policy/pensando_session_end.json
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/pensando_create_deny' -d @./elasticsearch/policy/pensando_create_deny.json
 				curl -XPUT -H'Content-Type: application/json' 'http://localhost:9200/_ilm/policy/elastiflow' -d @./elasticsearch/policy/elastiflow.json
-				
-				
+
+
 
   12. From the install directory, load the Kibana dashboard for syslog:
 
 				curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/pensando-dss-10.15.x-syslog.ndjson
-				
+
   </br>
 
   13. From the install directory, load the Kibana dashboard IPFIX:
 
 				curl -X POST "http://localhost:5601/api/saved_objects/_import?overwrite=true" -H "kbn-xsrf: true" -H "securitytenant: global" --form file=@/kibana/kibana-8.2.x-flow-codex.ndjson
-				
+
   </br>
 
-				
+
 
   14. Point your browser to the ip of your ELK cluster, port 5601
 
   </br>
 
-  
+
 
   15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of how the containers are doing -
 
