@@ -131,6 +131,9 @@
 						},
 						"ip": {
 							"type": "ip"
+						},
+						"name": {
+							"type": "keyword"
 						}
 					}
 				},
@@ -175,6 +178,9 @@
 						},
 						"ip": {
 							"type": "ip"
+						},
+						"name": {
+							"type": "keyword"
 						}
 					}
 				},
