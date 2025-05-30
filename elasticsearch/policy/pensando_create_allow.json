@@ -4,17 +4,9 @@
       "hot": {
         "min_age": "0ms",
         "actions": {
-          "set_priority": {
-            "priority": 100
-          }
-        }
-      },
-      "cold": {
-        "min_age": "1h",
-        "actions": {
-          "readonly": {},
-          "set_priority": {
-            "priority": 0
+          "rollover": {
+            "max_age": "1h",
+            "max_primary_shard_size": "20gb"
           }
         }
       },
@@ -22,7 +14,7 @@
         "min_age": "2h",
         "actions": {
           "delete": {
-            "delete_searchable_snapshot": true
+            "delete_searchable_snapshot": false
           }
         }
       }

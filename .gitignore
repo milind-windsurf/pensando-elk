@@ -141,3 +141,5 @@ data/es_backups/
 # _build
 # _static
 # _templates
+
+*.bak

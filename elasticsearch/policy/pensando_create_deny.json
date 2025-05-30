@@ -4,17 +4,15 @@
       "hot": {
         "min_age": "0ms",
         "actions": {
+          "forcemerge": {
+            "max_num_segments": 1
+          },
+          "rollover": {
+            "max_age": "1d",
+            "max_primary_shard_size": "20gb"
+          },
           "set_priority": {
             "priority": 100
-          }
-        }
-      },
-      "cold": {
-        "min_age": "1d",
-        "actions": {
-          "readonly": {},
-          "set_priority": {
-            "priority": 0
           }
         }
       },
@@ -22,7 +20,7 @@
         "min_age": "7d",
         "actions": {
           "delete": {
-            "delete_searchable_snapshot": true
+            "delete_searchable_snapshot": false
           }
         }
       }
