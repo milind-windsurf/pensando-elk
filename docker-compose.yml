@@ -54,10 +54,10 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:${TAG}
     container_name: pensando-logstash
-    restart: 'unless-stopped'
     environment:
       - xpack.monitoring.enabled=false
       - xpack.management.enabled=false
+    restart: 'unless-stopped'
     volumes:
       - ${PWD}/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
       - ${PWD}/logstash/dss_syslog.conf:/usr/share/logstash/pipeline/dss_syslog.conf
