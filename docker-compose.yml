@@ -72,7 +72,7 @@ services:
 
   # ElastiFlow Unified Collector
   flow-collector:
-    image: elastiflow/flow-collector:7.0.0
+    image: elastiflow/flow-collector:7.9.0
     container_name: pensando-elastiflow
     restart: 'unless-stopped'
     ports:
