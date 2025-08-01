@@ -1,4 +1,4 @@
-<img src="https://th.bing.com/th/id/OIP.CwPiU5tKuxQpL4ZMRSoVIQAAAA?pid=ImgDet&rs=1" alt="AMD Pensando" width="350"/>
+<img src="_assets/AMD-Pensando-White.png" alt="AMD Pensando" width="350"/>
 
 
 ELK based analytics for AMD Pensando DPUs in the Aruba CX10K

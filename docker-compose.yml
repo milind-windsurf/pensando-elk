@@ -54,6 +54,9 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:${TAG}
     container_name: pensando-logstash
+    environment:
+      - xpack.monitoring.enabled=false
+      - xpack.management.enabled=false
     restart: 'unless-stopped'
     volumes:
       - ${PWD}/logstash/pipelines.yml:/usr/share/logstash/config/pipelines.yml
@@ -69,7 +72,7 @@ services:
 
   # ElastiFlow Unified Collector
   flow-collector:
-    image: elastiflow/flow-collector:7.0.0
+    image: elastiflow/flow-collector:7.9.0
     container_name: pensando-elastiflow
     restart: 'unless-stopped'
     ports:

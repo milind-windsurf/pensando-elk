@@ -9,419 +9,326 @@
         "refresh_interval": "5s"
       }
     },
-    "mappings": {
-      "_source": {
-        "excludes": [],
-        "includes": [],
-        "enabled": true
-      },
-      "_routing": {
-        "required": false
-      },
-      "dynamic": true,
-      "numeric_detection": false,
-      "date_detection": true,
-      "dynamic_date_formats": [
-        "strict_date_optional_time",
-        "yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
-      ],
-      "dynamic_templates": [],
-      "properties": {
-        "@timestamp": {
-          "type": "date"
-        },
-        "@version": {
-          "type": "byte"
-        },
-        "destination": {
-          "type": "object",
-          "properties": {
-            "ip": {
-              "type": "ip"
-            },
-            "port": {
-              "type": "integer"
-            }
-          }
-        },
-        "dsx": {
-          "type": "object",
-          "properties": {
-            "device_name": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "ser_num": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "sw_ver": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "type": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "unit_id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "ecs": {
-          "type": "object",
-          "properties": {
-            "version": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "event": {
-          "type": "object",
-          "properties": {
-            "created": {
-              "type": "date"
-            },
-            "kind": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "original": {
-              "type": "text"
-            },
-            "provider": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "provider_id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "host": {
-          "type": "object",
-          "properties": {
-            "ip": {
-              "type": "ip"
-            },
-            "name": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "log": {
-          "type": "object",
-          "properties": {
-            "msg_id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "protocol": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "stuctured_data": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "syslog_priority": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "syslog_version": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "version": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "nat": {
-          "type": "object",
-          "properties": {
-            "dst_xltd_ip": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "dst_xltd_port": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "src_xltd_ip": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "network": {
-          "type": "object",
-          "properties": {
-            "bytes": {
-              "type": "long"
-            },
-            "packets": {
-              "type": "long"
-            },
-            "transport": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "vlan": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "vrf": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "security": {
-          "type": "object",
-          "properties": {
-            "policy_display_name": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "policy_id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "policy_name": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "rule_id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "rule_name": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            }
-          }
-        },
-        "session": {
-          "type": "object",
-          "properties": {
-            "action": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "id": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "iflow_bytes": {
-              "type": "long"
-            },
-            "iflow_pkts": {
-              "type": "long"
-            },
-            "rflow_bytes": {
-              "type": "long"
-            },
-            "rflow_pkts": {
-              "type": "long"
-            },
-            "state": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "ignore_above": 256,
-                  "type": "keyword"
-                }
-              }
-            },
-            "total_bytes": {
-              "type": "long"
-            },
-            "total_packets": {
-              "type": "long"
-            }
-          }
-        },
-        "source": {
-          "type": "object",
-          "properties": {
-            "ip": {
-              "type": "ip"
-            },
-            "port": {
-              "type": "integer"
-            },
-            "vlan": {
-              "type": "long"
-            }
-          }
-        },
-        "tags": {
-          "type": "text",
-          "fields": {
-            "keyword": {
-              "ignore_above": 256,
-              "type": "keyword"
-            }
-          }
-        }
-      }
-    },
-    "aliases": {
-      "my_alias": {}
-    }
+		"mappings": {
+			"_routing": {
+				"required": false
+			},
+			"numeric_detection": false,
+			"dynamic_date_formats": [
+				"strict_date_optional_time",
+				"yyyy/MM/dd HH:mm:ss Z||yyyy/MM/dd Z"
+			],
+			"_source": {
+				"excludes": [
+				],
+				"includes": [
+				],
+				"enabled": true
+			},
+			"dynamic": true,
+			"dynamic_templates": [
+			],
+			"date_detection": true,
+			"properties": {
+				"nat": {
+					"type": "object",
+					"properties": {
+						"dst_xltd_port": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"dst_xltd_ip": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"src_xltd_ip": {
+							"ignore_above": 256,
+							"type": "keyword"
+						}
+					}
+				},
+				"log": {
+					"type": "object",
+					"properties": {
+						"stuctured_data": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"protocol": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"syslog_priority": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"msg_id": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"syslog_version": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"version": {
+							"index": false,
+							"ignore_above": 256,
+							"type": "keyword"
+						}
+					}
+				},
+				"session": {
+					"type": "object",
+					"properties": {
+						"iflow_bytes": {
+							"index": false,
+							"type": "long"
+						},
+						"rflow_pkts": {
+							"index": false,
+							"type": "long"
+						},
+						"iflow_pkts": {
+							"index": false,
+							"type": "long"
+						},
+						"rflow_bytes": {
+							"index": false,
+							"type": "long"
+						},
+						"total_bytes": {
+							"index": false,
+							"type": "long"
+						},
+						"action": {
+							"ignore_above": 256,
+							"type": "keyword"
+					},
+					"id": {
+						"ignore_above": 256,
+						"type": "keyword"
+					},
+					"state": {
+						"ignore_above": 256,
+						"type": "keyword"
+					},
+					"total_packets": {
+						"index": false,
+						"type": "long"
+					}
+				}
+				},
+				"destination": {
+					"type": "object",
+					"properties": {
+						"port": {
+							"type": "integer"
+						},
+						"ip": {
+							"type": "ip"
+						},
+						"name": {
+							"type": "keyword"
+						}
+					}
+				},
+				"dsx": {
+					"type": "object",
+					"properties": {
+						"device_name": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"type": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"unit_id": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"ser_num": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"sw_ver": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"ignore_above": 256,
+									"type": "keyword"
+								}
+							}
+						}
+					}
+				},
+				"source": {
+					"type": "object",
+					"properties": {
+						"vlan": {
+							"type": "long"
+						},
+						"port": {
+							"type": "integer"
+						},
+						"ip": {
+							"type": "ip"
+						},
+						"name": {
+							"type": "keyword"
+						}
+					}
+				},
+				"network": {
+					"type": "object",
+					"properties": {
+						"vlan": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"bytes": {
+							"index": false,
+							"type": "long"
+						},
+						"transport": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"vrf": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"packets": {
+							"index": false,
+							"type": "long"
+						}
+					}
+				},
+				"tags": {
+					"index": false,
+					"ignore_above": 256,
+					"type": "keyword"
+				},
+				"connection_tracking": {
+					"ignore_above": 256,
+					"type": "keyword"
+				},
+				"fragmentation_tracking": {
+					"ignore_above": 256,
+					"type": "keyword"
+				},
+				"encrypted_tracking": {
+					"ignore_above": 256,
+					"type": "keyword"
+				},
+				"security": {
+					"type": "object",
+					"properties": {
+						"rule_id": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"policy_id": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"rule_name": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"policy_name": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"policy_display_name": {
+							"ignore_above": 256,
+							"type": "keyword"
+						}
+					}
+				},
+				"@timestamp": {
+					"type": "date"
+				},
+				"ecs": {
+					"type": "object",
+					"properties": {
+						"version": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"ignore_above": 256,
+									"type": "keyword"
+								}
+							}
+						}
+					}
+				},
+				"@version": {
+					"type": "byte"
+				},
+				"host": {
+					"type": "object",
+					"properties": {
+						"ip": {
+							"type": "ip"
+						},
+						"name": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"ignore_above": 256,
+									"type": "keyword"
+								}
+							}
+						}
+					}
+				},
+				"event": {
+					"type": "object",
+					"properties": {
+						"original": {
+							"type": "text"
+						},
+						"provider": {
+							"type": "text",
+							"fields": {
+								"keyword": {
+									"ignore_above": 256,
+									"type": "keyword"
+								}
+							}
+						},
+						"created": {
+							"type": "date"
+						},
+						"kind": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"provider_id": {
+							"ignore_above": 256,
+							"type": "keyword"
+						}
+					}
+				}
+			}
+		}
   },
   "index_patterns": [
     "pensando-fwlog-session-end*"
-  ]
+  ],
+	"data_stream": {
+		"hidden": false,
+		"allow_custom_routing": false
+	},
+	"composed_of": [
+	],
+	"ignore_missing_component_templates": [
+	],
+	"allow_auto_create": true
 }
