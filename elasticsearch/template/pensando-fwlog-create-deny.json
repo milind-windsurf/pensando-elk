@@ -206,6 +206,18 @@
 						"packets": {
 							"index": false,
 							"type": "long"
+						},
+						"direction": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"application": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"protocol_version": {
+							"ignore_above": 256,
+							"type": "keyword"
 						}
 					}
 				},
@@ -248,6 +260,17 @@
 						"policy_display_name": {
 							"ignore_above": 256,
 							"type": "keyword"
+						},
+						"threat_level": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"classification": {
+							"ignore_above": 256,
+							"type": "keyword"
+						},
+						"risk_score": {
+							"type": "integer"
 						}
 					}
 				},
@@ -324,7 +347,8 @@
   ],
 	"data_stream": {
 		"hidden": false,
-		"allow_custom_routing": false
+		"allow_custom_routing": false,
+		"timestamp_field": "@timestamp"
 	},
 	"composed_of": [
 	],
