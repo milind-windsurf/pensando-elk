@@ -20,13 +20,19 @@ services:
     container_name: pensando-elasticsearch
     restart: 'unless-stopped'
     environment:
+      # Network configuration - bind to all interfaces
       - http.host=0.0.0.0
       - http.port=9200
+      # Single node cluster configuration
       - node.name=es01
       - cluster.initial_master_nodes=es01
+      # JVM heap size - adjust based on available system memory
       - ES_JAVA_OPTS=-Xms4g -Xmx4g
+      # Disable security for demo/development environment
       - xpack.security.enabled=false
+      # Allow destructive operations without explicit naming
       - action.destructive_requires_name=false
+      # Backup repository path for snapshots
       - path.repo=/usr/share/elasticsearch/backups
     ulimits:
       nproc: 65535
@@ -55,7 +61,9 @@ services:
     image: docker.elastic.co/logstash/logstash:${TAG}
     container_name: pensando-logstash
     environment:
+      # Disable X-Pack monitoring for demo environment
       - xpack.monitoring.enabled=false
+      # Disable centralized pipeline management
       - xpack.management.enabled=false
     restart: 'unless-stopped'
     volumes:
@@ -63,9 +71,11 @@ services:
       - ${PWD}/logstash/dss_syslog.conf:/usr/share/logstash/pipeline/dss_syslog.conf
       - ${PWD}/logstash/psm_event.conf:/usr/share/logstash/pipeline/psm_event.conf
     ports:
+      # Syslog input port for Pensando DPU firewall logs
       - target: 5514
         published: 5514
         protocol: udp
+      # Logstash monitoring API port
       - 6102:6102
     networks: ['elk-stack']
     depends_on: ['elasticsearch']
@@ -84,9 +94,12 @@ services:
     volumes:
       - ./data/elastiflow:/etc/elastiflow
     environment:
+      # Accept ElastiFlow license terms
       EF_LICENSE_ACCEPTED: 'true'
+      # Optional: ElastiFlow account ID for licensed features
       #EF_ACCOUNT_ID: ''
 
+      # Optional: License key for commercial ElastiFlow features
       #EF_FLOW_LICENSE_KEY: ''
       #EF_FLOW_LICENSED_UNITS:
 
