@@ -209,10 +209,15 @@ This is backwards compatible with CXOS software 10.13.x and 10.14.x as well (and
         ```
   </br>
 
-  15. Use basic docker commands, like ```docker ps``` and ```docker logs <container name>``` to view status of the containers.
+  15. Use basic docker commands to monitor the ELK stack:
+      - ```docker ps``` - View running container status
+      - ```docker logs <container name>``` - View container logs
+      - ```docker stats``` - Monitor resource usage
   </br>
 
-  16. Point your browser to the ip of your ELK cluster, port 5601 </br>
+  16. Access the Kibana web interface:
+      - Point your browser to the IP of your ELK cluster, port 5601
+      - Default URL for local installations: http://localhost:5601 </br>
       **NOTE:**
       It could take about 5 mins for visualizations to become populated in both the DSS and IPFix dashboards.
 
