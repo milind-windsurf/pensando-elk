@@ -1,0 +1,27 @@
+{
+  "nic_interface": "eth0",
+  "firmware_path": "./firmware/",
+  "backup_path": "./firmware/backup/",
+  "log_path": "./logs/nic_automation/",
+  "cli_timeout": 30,
+  "health_check_interval": 5,
+  "max_recovery_attempts": 3,
+  "debug_mode": true,
+  "techsupport_path": "./logs/techsupport/",
+  "health_checks": {
+    "interrupt_threshold": 10000,
+    "error_rate_threshold": 0.01,
+    "memory_leak_threshold": "100MB",
+    "core_dump_age_hours": 24
+  },
+  "recovery_settings": {
+    "max_retry_attempts": 3,
+    "retry_delay_seconds": 10,
+    "escalation_timeout_minutes": 30
+  },
+  "notification_settings": {
+    "email_alerts": true,
+    "slack_webhook": "",
+    "severity_levels": ["critical", "high", "medium"]
+  }
+}
